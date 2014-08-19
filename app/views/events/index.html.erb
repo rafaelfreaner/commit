@@ -1,0 +1,18 @@
+<h1> Commit now</h1>
+
+<% @events.each do |event| %>
+  <div>
+    <%= event.user.username %>
+  <div>
+    <%= event.name %> 
+  </div>
+  <div>
+    <%= event.description %> 
+  </div>
+  <div>
+    <%= event.zipcode %>
+  </div>
+  <div>
+    <%= event.time %>
+  </div>
+<% end %>

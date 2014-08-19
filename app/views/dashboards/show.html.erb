@@ -1,0 +1,36 @@
+<h3>Welcome to your dashboard</h3>
+
+<div>
+  <h2>Post an Event!</h2>
+
+  <%= form_for @event do |form| %> 
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+    <div>
+      <%= form.label :zipcode %>
+      <%= form.text_field :zipcode %>
+    </div>
+    <div>
+      <%= form.label :time %>
+      <%= form.text_field :time %>
+    </div>
+    <div>
+      <%= form.label :date %>
+      <%= form.text_field :date %>
+    </div>
+    <div>
+      <%= form.submit "Create Event" %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <br>
+<%= link_to "View Our Events", events_path %>
+</div>
