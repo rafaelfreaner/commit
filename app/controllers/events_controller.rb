@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :require_login, only: [:index]
 
   def create
     current_user.events.create(event_params)
@@ -19,6 +20,7 @@ class EventsController < ApplicationController
         properties: {
           name: event.name,
           address: event.zipcode,
+          time: event.time,
           :'marker-color' => '#00607d',
           :'marker-symbol' => 'circle',
           :'marker-size' => 'medium'
@@ -35,7 +37,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :zipcode, :longitude, :latitude, :time, :date)
+    params.require(:event).permit(:name, :description, :zipcode, :address, :longitude, :latitude, :time, :date)
   end
 
 end

@@ -6,6 +6,9 @@ gem 'rails', '4.1.4'
 gem 'monban', '~> 0.1.1'
 gem 'area'
 gem "geocoder"
+gem 'mailboxer'
+gem 'haml-rails'
+gem 'simple_form'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
