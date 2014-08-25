@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @geojson = Array.new
+    @geojson = []
 
     @events.each do |event|
       @geojson << {

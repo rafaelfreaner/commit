@@ -8,16 +8,9 @@ class ConversationsController < ApplicationController
 
   def create
     recipient = User.find_by(username: params[:user_id])
-    #recipient_emails = conversation_params(:recipients).split(',')
-    #recipients = User.where(email: recipient_emails).all
     conversation = current_user.
       send_message(recipient, *conversation_params(:body, :subject)).conversation
 
-    redirect_to conversation_path(conversation)
-  end
-
-  def reply
-    current_user.reply_to_conversation(conversation, *message_params(:body, :subject))
     redirect_to conversation_path(conversation)
   end
 
