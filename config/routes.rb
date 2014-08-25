@@ -9,11 +9,20 @@ Rails.application.routes.draw do
   constraints Monban::Constraints::SignedOut.new do 
     root "homes#show"
   end
-
+  resources :conversations, only: [:index, :show] do 
+    member do 
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
   resource :session, only: [:new, :create, :destroy]
   resources :events, only: [:new, :create, :index]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show] do
+    resources :conversations, only: [:new, :create]
+  end
   resource :dashboard, only: [:show]
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

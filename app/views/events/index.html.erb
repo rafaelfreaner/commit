@@ -1,8 +1,13 @@
 <h1> Commit now</h1>
 
+<div>
+  <%= link_to "View Conversations", conversations_path %>
+  <br><br>
+</div>
+
 <% @events.each do |event| %>
   <div>
-    <%= event.user.username %>
+    <%= link_to event.user.username, event.user %>
   <div>
     <%= event.name %> 
   </div>
@@ -10,9 +15,11 @@
     <%= event.description %> 
   </div>
   <div>
-    <%= event.zipcode %>
-  </div>
-  <div>
     <%= event.time %>
   </div>
+  <div>
+    <%= link_to "Commit", new_user_conversation_path(event.user) %>
+  </div>
+  <br>
+  <end>
 <% end %>

@@ -2,9 +2,18 @@
 <html>
 <head>
   <title>Commit</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />  
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:70%; margin-left: 35em;  }
+  </style>
 </head>
 <body>
 
@@ -14,6 +23,8 @@
 <% else %>
   <%= link_to "Sign in", new_session_path %>
 <% end %>
+
+<div id='map'></div>
 
 <%= yield %>
 
