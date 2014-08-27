@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   end
 
   def event_friend?(friend, event)
-    Friendship.find_by(friend_id: friend.id, event_id: event.id)
+    friendships.find_by(friend_id: friend.id, event_id: event.id)
   end
 end
