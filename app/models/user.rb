@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :friendships
+  has_many :friends, through: :friendships
   has_many :events
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
@@ -17,4 +19,7 @@ class User < ActiveRecord::Base
     email
   end
 
+  def event_friend?(friend, event)
+    Friendship.find_by(friend_id: friend.id, event_id: event.id)
+  end
 end
