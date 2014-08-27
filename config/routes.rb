@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :events, only: [:new, :create, :index]
   resources :users, only: [:new, :create, :show] do
+    member do
+      post "friend" => "friendships#create"
+      delete "unfriend" => "friendships#destroy"
+    end
     resources :conversations, only: [:new, :create]
   end
   resource :dashboard, only: [:show]

@@ -17,8 +17,13 @@
   <div>
     <%= event.time %>
   </div>
+  <div> 
+    <%= button_to "Commit", friend_user_path(event.user.id, event_id: event.id) %>
+  </div>
   <div>
-    <%= link_to "Commit", new_user_conversation_path(event.user) %>
+    <% if current_user.event_friend?(event.user, event) %>
+      <%= button_to "Message User", new_user_conversation_path(event.user) %>
+    <% end %>
   </div>
   <br>
   <end>
