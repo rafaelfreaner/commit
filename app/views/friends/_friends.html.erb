@@ -1,0 +1,6 @@
+<% unless user.friends.empty? %>
+  <% user.friends.each do |user| %>
+    <%= link_to user.username, user_path(user.username) %>
+    <h4> Since <%= user.created_at.to_s(:long) %> </h4>
+  <% end %>
+<% end %>

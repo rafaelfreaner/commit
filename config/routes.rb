@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       delete "unfriend" => "friendships#destroy"
     end
     resources :conversations, only: [:new, :create]
+    resources :friends
   end
   resource :dashboard, only: [:show]
  

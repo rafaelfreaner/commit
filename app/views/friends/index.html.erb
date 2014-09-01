@@ -1,0 +1,15 @@
+<h3> My friends </h3>
+
+<% unless @user == current_user %>
+  <p>You don't have permission to access this page!</p>
+<% else %>
+  <h4> Current Commitments </h4>
+  <%= render "friends/friends", user: @user %>
+  <h4> Requested Commitments </h4>
+  <%= render "friends/requested_friends", user: @user %>
+  <h4> Pending Commitments </h4>
+  <%= render "friends/pending_friends", user: @user %>
+<% end %>
+<div>
+<%= link_to "Back To Events", events_path %>
+</div>

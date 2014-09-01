@@ -14,8 +14,7 @@ $ ->
     properties = marker.feature.properties
     popupContent =  '<div class="popup">' +
                       '<h3>' + properties.name + '</h3>' +
-                      '<p>' + properties.time + '</p>' +
-                      '<a href="http://localhost:3000/conversations/new">Commit</a>' + 
+                      '<p>' + properties.time + '</p>' + 
                     '</div>'
     marker.bindPopup popupContent,
       closeButton: false

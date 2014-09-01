@@ -1,2 +1,4 @@
 %h1 Start Conversation
-= render 'form'
+= render 'form', user: @user
+
+= link_to 'Back to Events', events_path

@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   end
 
   def index
+    @user = User.find_by(username: params[:id])
     @events = Event.all
     @geojson = []
 

@@ -1,30 +1,73 @@
-<h1> Commit now</h1>
+<h1> COMMIT</h1>
+<h5> Don't think twice </h5>
+
+ <div>
+    <%= link_to "View Commit Requests", user_friends_path(current_user) %>
+    <br><br>
+</div>
+
+<% @events.each do |event| %>
+  <% unless event.user == current_user %>
+    <div>
+      <%= link_to event.user.username, event.user %> says 
+    </div>
+
+    <div>
+      <%= event.name %> 
+    </div>
+
+    <div>
+      <%= event.description %> 
+    </div>
+
+    <div>
+      <%= event.time %>
+    </div>
+
+    <div> 
+      <% if signed_in? %>
+        <% unless event.user == current_user || current_user.requested_friends.include?(event.user) || current_user.friends.include?(event.user) || current_user.pending_friends.include?(event.user) %>
+          <%= form_for(:friendship, url: user_friends_path(user_id: current_user.id, friend_id: event.user.id, event_id: event.id)) do |f| %>
+            <%= submit_tag "Commit Request" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div>
+      <% if current_user.friends.include?(event.user) %>
+        <%= link_to "Start a conversation", new_user_conversation_path(event.user) %>
+      <% end %>
+    </div>
+
+    <br>
+  <% end %>
+<% end %>
 
 <div>
   <%= link_to "View Conversations", conversations_path %>
   <br><br>
 </div>
 
-<% @events.each do |event| %>
-  <div>
-    <%= link_to event.user.username, event.user %>
-  <div>
-    <%= event.name %> 
-  </div>
-  <div>
-    <%= event.description %> 
-  </div>
-  <div>
-    <%= event.time %>
-  </div>
-  <div> 
-    <%= button_to "Commit", friend_user_path(event.user.id, event_id: event.id) %>
-  </div>
-  <div>
-    <% if current_user.event_friend?(event.user, event) %>
-      <%= button_to "Message User", new_user_conversation_path(event.user) %>
+<div>
+  <h5> My events </h5>
+  <% @events.each do |event| %>
+    <% if event.user == current_user %>
+        <%= link_to event.user.username, event.user %> says 
+      </div>
+
+      <div>
+        <%= event.name %> 
+      </div>
+
+      <div>
+        <%= event.description %> 
+      </div>
+
+      <div>
+        <%= event.time %>
+        <br><br>
+      </div>
     <% end %>
-  </div>
-  <br>
-  <end>
-<% end %>
+  <% end %>
+</div>

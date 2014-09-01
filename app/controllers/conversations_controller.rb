@@ -1,6 +1,5 @@
 class ConversationsController < ApplicationController
   before_filter :require_login
-  before_filter :conversation
   helper_method :mailbox, :conversation
 
   def new

@@ -1,4 +1,4 @@
-= simple_form_for :conversation, url: user_conversations_path(@user) do |f|
+= simple_form_for :conversation, url: user_conversations_path(user) do |f|
   = f.input :subject
   = f.input :body, as: :text
   .form-actions
